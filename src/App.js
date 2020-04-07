@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import ListServices from './components/ListServices/ListServices';
 import UpdateService from './components/UpdateService/UpdateService';
 import NewService from './components/NewService/NewService';
@@ -47,15 +49,19 @@ class App extends React.Component {
 
     return (
       <div>
-        <Route path='/' exact render={(listProps) => <ListServices services={services} />} />
-        <Route path='/update' exact render={(updateProps) => <UpdateService {...updateProps} />} />
-        <Route path='/new' exact render={(newProps) => <NewService {...newProps} />} />
+        <Header />
+        <ListServices services={services} />
+        <Footer />
       </div>
     );
   }
 }
 
 export default App;
+
+// <Route path='/' exact render={(listProps) => <ListServices services={services} />} />
+// <Route path='/update' exact render={(updateProps) => <UpdateService {...updateProps} />} />
+// <Route path='/new' exact render={(newProps) => <NewService {...newProps} />} />
 
         // <TopNav />
         // <Route path='/new' exact component={NewService} />
