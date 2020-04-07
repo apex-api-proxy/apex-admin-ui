@@ -7,10 +7,10 @@ const ServiceForm = (props) => {
 			<FormElement 
 				key={input.name}
 				input={input} 
-				onFormElementChange={props.onFormElementChange} 
+				onFormElementChange={props.formInputChange} 
 				options={input.elementType === "select" ? props.options : "none" }
 				// value={props.formValues[input.id]}
-				setFormInputInState={props.formInputChange}
+				// setFormInputInState={props.formInputChange}
 				formType={input.formType}
 			/>
 		)

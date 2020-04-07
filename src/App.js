@@ -46,11 +46,16 @@ class App extends React.Component {
     })
   };
 
-  handleFormInputChange = (inputName, value) => {
-    this.setState({
-      "activeServiceEditForm": {
-        [inputName]: value,
-      }
+  handleFormInputChange = (e) => {
+    console.log(e.target.dataset.parameter);
+    const updatedServiceEditform = this.state["activeServiceEditForm"];
+    updatedServiceEditform[e.target.dataset.parameter] = e.target.value;
+
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        "activeServiceEditForm": updatedServiceEditform,
+      };
     })
   };
 
