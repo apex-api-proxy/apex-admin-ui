@@ -23,19 +23,36 @@ class App extends React.Component {
       "custom-configurations": {
 
       },
+      "activeServiceEditForm": {
+        "name": "",
+        "password": "",
+        "address": "",
+      },
     }
   }
 
   componentDidMount() {
-    
-
     this.setState({
 
     });
-
-
-
   }
+
+  handleServiceEditClick = (serviceName) => {
+    console.log(serviceName);
+    const activeForm = this.state["activeServiceEditForm"]["name"] === serviceName ? null : serviceName;
+
+    this.setState({
+      "activeServiceEditForm": { "name": activeForm},
+    })
+  };
+
+  handleFormInputChange = (inputName, value) => {
+    this.setState({
+      "activeServiceEditForm": {
+        [inputName]: value,
+      }
+    })
+  };
 
   render() {
     const services = Object.keys(this.state["service-hosts"])
@@ -50,7 +67,9 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <ListServices services={services} />
+        <Route path='/' exact render={(listProps) => <ListServices services={services} activeEditForm={this.state["activeServiceEditForm"]} onEditServiceClick={this.handleServiceEditClick} formInputChange={this.handleFormInputChange}/>} />
+        <Route path='/services' exact render={(listProps) => <ListServices services={services}  activeEditForm={this.state["activeServiceEditForm"]["name"]} onEditServiceClick={this.handleServiceEditClick} formInputChange={this.handleFormInputChange}/>} />} />
+        <Route path='/configuration' exact render={(listProps) => <ListServices services={services} />} />
         <Footer />
       </div>
     );

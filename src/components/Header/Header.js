@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../apex-logo.png';
-// import Navbar from '../Navbar/Navbar'
+import Navbar from '../Navbar/Navbar'
 
 const Header = (props) => {
 	return (
@@ -9,7 +9,7 @@ const Header = (props) => {
 				<img className="logo" src={logo} />
 			</div>
 			<h1>Apex Proxy</h1>
-			
+			<Navbar />
 		</header>
 	)
 }

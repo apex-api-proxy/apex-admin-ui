@@ -27,6 +27,8 @@ body {
 a {
     color: #65c8d0;
     text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 a:hover, a:focus {
@@ -55,6 +57,12 @@ header, footer {
     box-sizing: border-box;
     max-width: 100%;
 }
+
+header {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 header li {
     list-style: none;
     color: #c4122f;
@@ -68,6 +76,17 @@ header ul {
 header img {
     max-height: 50px;
     position: absolute;
+    left: 0;
+}
+
+nav {
+    padding: 5px 0;
+}
+nav div {
+    display: inline-block;
+}
+nav a {
+    color: #000000;
 }
 
 .header-link + .header-link {
@@ -95,15 +114,26 @@ h1 {
     text-align: center;
     color: #000000;
     margin: 0 auto;
-    margin-bottom: 10px;
     padding: 0 80px;
     line-height: 1;
     padding: 10px 0;
     border-bottom: 1px solid #65c8d0;
 }
 
+section i {
+    margin-right: 10px;
+}
+section i:hover {
+    color: #65c8d0;
+    cursor: pointer;
+}
+section li {
+    list-style: none;
+}
+
 section ul {
     text-align: left;
+    list-style: none;
 }
 ul.employees {
     width: 50%;
@@ -160,9 +190,9 @@ input {
 }
 
 button {
-    border: 2px solid #c4122f;
+    border: 2px solid #65c8d0;
     border-radius: 4px;
-    background-color: #65c8d0;
+    background-color: #dee3e2;
     color: #252831;
     font-family: Arial,sans-serif;
     font-size: 1.1em;

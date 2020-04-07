@@ -25,19 +25,19 @@ const serviceFormInputs = [
 		defaultValue: "",
 		validation: ""
 	},
-	{
-		name: "Token",
-		type: "text",
-		id: "tokenInput",
-		placeholder: "",
-		parameter: "token",
-		labelText: "Token",
-		errorMessage: "",
-		elementType: "input",
-		formType: "employeeForm",
-		defaultValue: "",
-		validation: ""
-	},
+	// {
+	// 	name: "Token",
+	// 	type: "text",
+	// 	id: "tokenInput",
+	// 	placeholder: "",
+	// 	parameter: "token",
+	// 	labelText: "Token",
+	// 	errorMessage: "",
+	// 	elementType: "input",
+	// 	formType: "employeeForm",
+	// 	defaultValue: "",
+	// 	validation: ""
+	// },
 	{
 		name: "Address",
 		type: "text",
@@ -52,6 +52,10 @@ const serviceFormInputs = [
 		validation: ""
 	}
 ];
+
+module.exports = {
+	serviceFormInputs,
+}
 
 // Add new service
 // * Service unique name

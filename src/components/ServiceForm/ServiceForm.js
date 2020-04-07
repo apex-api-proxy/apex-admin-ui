@@ -5,12 +5,12 @@ const ServiceForm = (props) => {
 	const inputs = props.inputs.map(input => {
 		return (
 			<FormElement 
-				key={input.id}
+				key={input.name}
 				input={input} 
 				onFormElementChange={props.onFormElementChange} 
 				options={input.elementType === "select" ? props.options : "none" }
-				value={props.formValues[input.id]}
-				setFormInputInState={props.setFormInputInState}
+				// value={props.formValues[input.id]}
+				setFormInputInState={props.formInputChange}
 				formType={input.formType}
 			/>
 		)
