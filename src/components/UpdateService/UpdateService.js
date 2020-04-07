@@ -2,18 +2,19 @@ import React from 'react';
 import ServiceForm from '../ServiceForm/ServiceForm';
 
 const UpdateService = (props) => {
-	return (
-		<section>
-			<h2>Update Service</h2>
-			<ServiceForm 
-				onFormElementChange={props.handleFormElementChange} 
-				onFormSubmit={props.handleFormSubmit} 
-				inputs={formInputs}
-				formValues={props.formValues}
-				// setFormInputInState={props.setFormInputInState}
-			/>
-		</section>
-	);
+	return (<div>Update Service page</div>);
+	// return (
+	// 	<section>
+	// 		<h2>Update Service</h2>
+	// 		<ServiceForm 
+	// 			onFormElementChange={props.handleFormElementChange} 
+	// 			onFormSubmit={props.handleFormSubmit} 
+	// 			inputs={formInputs}
+	// 			formValues={props.formValues}
+	// 			// setFormInputInState={props.setFormInputInState}
+	// 		/>
+	// 	</section>
+	// );
 };
 
 export default UpdateService;

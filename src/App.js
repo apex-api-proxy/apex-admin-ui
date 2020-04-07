@@ -1,5 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import ListServices from './components/ListServices/ListServices';
+import UpdateService from './components/UpdateService/UpdateService';
+import NewService from './components/NewService/NewService';
 import './App.css';
 
 class App extends React.Component {
@@ -11,7 +14,9 @@ class App extends React.Component {
 
       },
       "service-hosts": {
-
+        "dagpay": "dagpayapi.azurewebsites.net",
+        "cnn": "edition.cnn.com",
+        "bbc": "bbc.co.uk",
       },
       "custom-configurations": {
 
@@ -31,9 +36,20 @@ class App extends React.Component {
   }
 
   render() {
+    const services = Object.keys(this.state["service-hosts"])
+    .sort()
+    .map((host) => {
+      let returnObject = {};
+      returnObject["name"] = host;
+      returnObject["address"] = this.state["service-hosts"][host];
+      return returnObject;
+    });
+
     return (
       <div>
-        "Apex admin portal"
+        <Route path='/' exact render={(listProps) => <ListServices services={services} />} />
+        <Route path='/update' exact render={(updateProps) => <UpdateService {...updateProps} />} />
+        <Route path='/new' exact render={(newProps) => <NewService {...newProps} />} />
       </div>
     );
   }
