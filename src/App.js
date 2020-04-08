@@ -90,9 +90,11 @@ class App extends React.Component {
     )
     .then(response => {
       if (response.status === 201) {
-        this.displayResponse(response.body);
+        // this.displayResponse(response.body);
+        console.log(response.body);
       } else {
-        this.displayResponse(response.body);
+        // this.displayResponse(response.body);
+        console.log(response.body);
       }
     })
     .catch(function(error) {
@@ -101,7 +103,27 @@ class App extends React.Component {
   };
 
   handleEditFormSubmit = (formData) => {
-    
+    const formData = this.state["activeServiceEditForm"];
+    const body = JSON.stringify(formData);
+
+    fetch(`${baseURL}/services/`, 
+      { method: 'PUT', 
+        body: body,
+        headers: { 'Content-type': 'application/json' }
+      }
+    )
+    .then(response => {
+      if (response.status === 201) {
+        // this.displayResponse(response.body);
+        console.log(response.body);
+      } else {
+        // this.displayResponse(response.body);
+        console.log(response.body);
+      }
+    })
+    .catch(function(error) {
+      console.log('An error occurred: ', error);
+    });
   };
 
   render() {
