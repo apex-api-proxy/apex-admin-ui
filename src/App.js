@@ -73,7 +73,7 @@ class App extends React.Component {
       <div>
         <Header />
         <Route path='/' exact render={(listProps) => <ListServices services={services} activeEditForm={this.state["activeServiceEditForm"]} onEditServiceClick={this.handleServiceEditClick} formInputChange={this.handleFormInputChange}/>} />
-        <Route path='/services' exact render={(listProps) => <ListServices services={services}  activeEditForm={this.state["activeServiceEditForm"]["name"]} onEditServiceClick={this.handleServiceEditClick} formInputChange={this.handleFormInputChange}/>} />} />
+        <Route path='/services' exact render={(listProps) => <ListServices services={services}  activeEditForm={this.state["activeServiceEditForm"]["name"]} onEditServiceClick={this.handleServiceEditClick} formInputChange={this.handleFormInputChange}/>} />
         <Route path='/configuration' exact render={(listProps) => <ListServices services={services} />} />
         <Footer />
       </div>
