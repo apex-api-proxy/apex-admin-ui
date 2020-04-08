@@ -9,6 +9,8 @@ import NewService from './components/NewService/NewService';
 import { serviceFormInputs } from './formInputs';
 import './App.css';
 
+const baseURL = process.env.API_URL;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +25,11 @@ class App extends React.Component {
 
       },
       "activeServiceEditForm": {
+        "name": "",
+        "password": "",
+        "address": "",
+      },
+      "addServiceForm": {
         "name": "",
         "password": "",
         "address": "",
@@ -45,17 +52,56 @@ class App extends React.Component {
     })
   };
 
-  handleFormInputChange = (e) => {
+  handleAddFormInputChange = (e) => {
     console.log(e.target.dataset.parameter);
-    const updatedServiceEditform = this.state["activeServiceEditForm"];
-    updatedServiceEditform[e.target.dataset.parameter] = e.target.value;
+    const addForm = this.state["addServiceForm"];
+    addForm[e.target.dataset.parameter] = e.target.value;
 
     this.setState(prevState => {
       return {
         ...prevState,
-        "activeServiceEditForm": updatedServiceEditform,
+        "addServiceForm": addForm,
       };
     })
+  };
+
+  handleEditFormInputChange = (e) => {
+    console.log(e.target.dataset.parameter);
+    const updatedServiceEditForm = this.state["activeServiceEditForm"];
+    updatedServiceEditForm[e.target.dataset.parameter] = e.target.value;
+
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        "activeServiceEditForm": updatedServiceEditForm,
+      };
+    })
+  };
+
+  handleAddFormSubmit = (e) => {
+    const formData = this.state["addServiceForm"];
+    const body = JSON.stringify(formData);
+
+    fetch(`${baseURL}/services/`, 
+      { method: 'POST', 
+        body: body,
+        headers: { 'Content-type': 'application/json' }
+      }
+    )
+    .then(response => {
+      if (response.status === 201) {
+        this.displayResponse(response.body);
+      } else {
+        this.displayResponse(response.body);
+      }
+    })
+    .catch(function(error) {
+      console.log('An error occurred: ', error);
+    });
+  };
+
+  handleEditFormSubmit = (formData) => {
+    
   };
 
   render() {
@@ -71,12 +117,12 @@ class App extends React.Component {
     const listServices = {
       services: services,
       onEditServiceClick: this.handleServiceEditClick,
-      formInputChange: this.handleFormInputChange,
+      formInputChange: this.handleEditFormInputChange,
     };
 
     const newService = {
       inputs: serviceFormInputs,
-      formInputChange: this.handleFormInputChange,
+      formInputChange: this.handleAddFormInputChange,
     }
 
     return (
