@@ -2,7 +2,12 @@ import React from 'react';
 import ServiceForm from '../ServiceForm/ServiceForm';
 
 const NewService = (props) => {
-	return (<div>New Service page</div>);
+	return (
+		<section>
+			<h2>Add new service</h2>
+			<ServiceForm inputs={props.inputs} formInputChange={props.formInputChange}/>
+		</section>
+	);
 	// return (
 	// 	<section>
 	// 		<h2>New Service</h2>

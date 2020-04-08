@@ -120,6 +120,10 @@ h1 {
     border-bottom: 1px solid #65c8d0;
 }
 
+h2 {
+    text-align: center;
+}
+
 section i {
     margin-right: 10px;
 }

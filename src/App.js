@@ -3,8 +3,10 @@ import { Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import ListServices from './components/ListServices/ListServices';
+import ServicesIndex from './components/ServicesIndex/ServicesIndex';
 import UpdateService from './components/UpdateService/UpdateService';
 import NewService from './components/NewService/NewService';
+import { serviceFormInputs } from './formInputs';
 import './App.css';
 
 class App extends React.Component {
@@ -12,9 +14,6 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      "service-credentials": {
-
-      },
       "service-hosts": {
         "dagpay": "dagpayapi.azurewebsites.net",
         "cnn": "edition.cnn.com",
@@ -69,10 +68,21 @@ class App extends React.Component {
       return returnObject;
     });
 
+    const listServices = {
+      services: services,
+      onEditServiceClick: this.handleServiceEditClick,
+      formInputChange: this.handleFormInputChange,
+    };
+
+    const newService = {
+      inputs: serviceFormInputs,
+      formInputChange: this.handleFormInputChange,
+    }
+
     return (
       <div>
         <Header />
-        <Route path='/' exact render={(listProps) => <ListServices services={services} activeEditForm={this.state["activeServiceEditForm"]} onEditServiceClick={this.handleServiceEditClick} formInputChange={this.handleFormInputChange}/>} />
+        <Route path='/' exact render={(listProps) => <ServicesIndex listServices={listServices} newService={newService} activeEditForm={this.state["activeServiceEditForm"]["name"]} />} />
         <Route path='/services' exact render={(listProps) => <ListServices services={services}  activeEditForm={this.state["activeServiceEditForm"]["name"]} onEditServiceClick={this.handleServiceEditClick} formInputChange={this.handleFormInputChange}/>} />
         <Route path='/configuration' exact render={(listProps) => <ListServices services={services} />} />
         <Footer />
