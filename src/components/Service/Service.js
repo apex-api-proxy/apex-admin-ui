@@ -10,7 +10,7 @@ const Service = (props) => {
 	return (
 		<li id={props.name} >
 			<i data-service={props.name} className="far fa-edit" onClick={() => { props.onEditServiceClick(props.name) }} ></i>{`${props.name} (${props.address})`}
-			{props.formActive ? <ServiceForm inputs={inputs} formInputChange={props.formInputChange}/> : ""}
+			{props.formActive ? <ServiceForm inputs={inputs} formInputChange={props.formInputChange} onFormSubmit={props.submitForm}/> : ""}
 		</li>
 	);
 };

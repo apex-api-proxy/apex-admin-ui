@@ -9,7 +9,7 @@ import NewService from './components/NewService/NewService';
 import { serviceFormInputs } from './formInputs';
 import './App.css';
 
-const baseURL = process.env.API_URL;
+const baseURL = 'https://3.135.234.50:1990';
 
 class App extends React.Component {
   constructor(props) {
@@ -66,6 +66,7 @@ class App extends React.Component {
   };
 
   handleEditFormInputChange = (e) => {
+    e.preventDefault();
     console.log(e.target.dataset.parameter);
     const updatedServiceEditForm = this.state["activeServiceEditForm"];
     updatedServiceEditForm[e.target.dataset.parameter] = e.target.value;
@@ -79,6 +80,8 @@ class App extends React.Component {
   };
 
   handleAddFormSubmit = (e) => {
+    e.preventDefault();
+    console.log('baseURL: ', baseURL);
     const formData = this.state["addServiceForm"];
     const body = JSON.stringify(formData);
 
@@ -89,6 +92,7 @@ class App extends React.Component {
       }
     )
     .then(response => {
+      console.log(response);
       if (response.status === 201) {
         // this.displayResponse(response.body);
         console.log(response.body);
@@ -102,7 +106,8 @@ class App extends React.Component {
     });
   };
 
-  handleEditFormSubmit = (formData) => {
+  handleEditFormSubmit = (e) => {
+    e.preventDefault();
     const formData = this.state["activeServiceEditForm"];
     const body = JSON.stringify(formData);
 
@@ -113,6 +118,7 @@ class App extends React.Component {
       }
     )
     .then(response => {
+      console.log(response);
       if (response.status === 201) {
         // this.displayResponse(response.body);
         console.log(response.body);
@@ -140,11 +146,13 @@ class App extends React.Component {
       services: services,
       onEditServiceClick: this.handleServiceEditClick,
       formInputChange: this.handleEditFormInputChange,
+      submitForm: this.handleEditFormSubmit,
     };
 
     const newService = {
       inputs: serviceFormInputs,
       formInputChange: this.handleAddFormInputChange,
+      submitForm: this.handleAddFormSubmit,
     }
 
     return (

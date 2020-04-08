@@ -5,7 +5,7 @@ const NewService = (props) => {
 	return (
 		<section>
 			<h2>Add new service</h2>
-			<ServiceForm inputs={props.inputs} formInputChange={props.formInputChange}/>
+			<ServiceForm inputs={props.inputs} formInputChange={props.formInputChange} onFormSubmit={props.submitForm}/>
 		</section>
 	);
 	// return (
