@@ -4,7 +4,7 @@ const serviceFormInputs = [
 		type: "text",
 		id: "serviceNameInput",
 		placeholder: "",
-		parameter: "servicename",
+		parameter: "name",
 		labelText: "Service Name",
 		errorMessage: "Please enter a unique service name",
 		elementType: "input",

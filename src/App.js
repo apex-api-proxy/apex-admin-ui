@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import ListServices from './components/ListServices/ListServices';
@@ -7,9 +7,11 @@ import ServicesIndex from './components/ServicesIndex/ServicesIndex';
 import UpdateService from './components/UpdateService/UpdateService';
 import NewService from './components/NewService/NewService';
 import { serviceFormInputs } from './formInputs';
+import token from 'basic-auth-token';
 import './App.css';
 
 const baseURL = 'https://3.135.234.50:1990';
+// const baseURL = 'localhost:1990';
 
 class App extends React.Component {
   constructor(props) {
@@ -34,6 +36,7 @@ class App extends React.Component {
         "password": "",
         "address": "",
       },
+      "token": "",
     }
   }
 
@@ -80,6 +83,7 @@ class App extends React.Component {
   };
 
   handleAddFormSubmit = (e) => {
+    console.log('process.env.HTTPS: ', process.env.HTTPS);
     e.preventDefault();
     console.log('baseURL: ', baseURL);
     const formData = this.state["addServiceForm"];
@@ -95,6 +99,7 @@ class App extends React.Component {
       console.log(response);
       if (response.status === 201) {
         // this.displayResponse(response.body);
+        this.displayToken(formData["name"], formData["password"]);
         console.log(response.body);
       } else {
         // this.displayResponse(response.body);
@@ -132,6 +137,26 @@ class App extends React.Component {
     });
   };
 
+  doneRecordingToken = (e) => {
+    // e.preventDefault();
+
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        "token": "",
+      };
+    })
+  };
+
+  displayToken = (name, password) => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        "token": token(name, password),
+      };
+    })
+  };
+
   render() {
     const services = Object.keys(this.state["service-hosts"])
     .sort()
@@ -153,14 +178,47 @@ class App extends React.Component {
       inputs: serviceFormInputs,
       formInputChange: this.handleAddFormInputChange,
       submitForm: this.handleAddFormSubmit,
+    };
+
+    const tokenModal = {
+      token: this.state["token"],
+      onDoneRecordingToken: this.doneRecordingToken,
     }
 
     return (
       <div>
         <Header />
-        <Route path='/' exact render={(listProps) => <ServicesIndex listServices={listServices} newService={newService} activeEditForm={this.state["activeServiceEditForm"]["name"]} />} />
-        <Route path='/services' exact render={(listProps) => <ListServices services={services}  activeEditForm={this.state["activeServiceEditForm"]["name"]} onEditServiceClick={this.handleServiceEditClick} formInputChange={this.handleFormInputChange}/>} />
-        <Route path='/configuration' exact render={(listProps) => <ListServices services={services} />} />
+        <Switch>
+          <Route 
+            path='/services' 
+            render={(listProps) => 
+              <ServicesIndex 
+                listServices={listServices} 
+                newService={newService} 
+                activeEditForm={this.state["activeServiceEditForm"]["name"]}
+                token={this.state["token"]}
+                doneRecordingToken={this.doneRecordingToken}
+              />
+            } 
+          />
+          <Route 
+            path='/configuration'
+            exact 
+            render={(listProps) => <ListServices services={services} /> } 
+          />
+          <Route 
+            path='/' 
+            render={(listProps) => 
+              <ServicesIndex 
+                listServices={listServices} 
+                newService={newService} 
+                activeEditForm={this.state["activeServiceEditForm"]["name"]}
+                token={this.state["token"]}
+                doneRecordingToken={this.doneRecordingToken}
+              />
+            } 
+          />
+        </Switch>
         <Footer />
       </div>
     );
