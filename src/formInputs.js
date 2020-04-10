@@ -53,8 +53,51 @@ const serviceFormInputs = [
 	}
 ];
 
+const configurationFormInputs = [
+	{
+		name: "Requesting Service Name",
+		type: "text",
+		id: "reqServiceNameInput",
+		placeholder: "",
+		parameter: "reqServiceName",
+		labelText: "Requesting Service Name",
+		errorMessage: "Please enter a requesting service name",
+		elementType: "select",
+		formType: "configForm",
+		defaultValue: "",
+		validation: ""
+	},
+	{
+		name: "Responding Service Name",
+		type: "text",
+		id: "resServiceNameInput",
+		placeholder: "",
+		parameter: "resServiceName",
+		labelText: "Responding Service Name",
+		errorMessage: "Please enter a responding service name",
+		elementType: "select",
+		formType: "configForm",
+		defaultValue: "",
+		validation: ""
+	},
+	{
+		name: "Custom Configuration",
+		type: "text",
+		id: "customConfig",
+		placeholder: "",
+		parameter: "configuration",
+		labelText: "Custom Configuration",
+		errorMessage: "Please a valid configuration",
+		elementType: "textArea",
+		formType: "configForm",
+		defaultValue: "",
+		validation: ""
+	},
+];
+
 module.exports = {
 	serviceFormInputs,
+	configurationFormInputs,
 }
 
 // Add new service
