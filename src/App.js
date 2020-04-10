@@ -115,11 +115,9 @@ class App extends React.Component {
     .then(response => {
       console.log(response);
       if (response.status === 201) {
-        // this.displayResponse(response.body);
         this.displayToken(formData["name"], formData["password"]);
         this.fetchServiceHosts();
       } else {
-        // this.displayResponse(response.body);
         console.log(response.body);
       }
     })
@@ -132,6 +130,7 @@ class App extends React.Component {
     e.preventDefault();
     const formData = this.state["activeServiceEditForm"];
     const body = JSON.stringify(formData);
+    console.log('outgoing body: ', body);
 
     fetch(`${baseURL}/services/`, 
       { method: 'PUT', 
@@ -140,12 +139,11 @@ class App extends React.Component {
       }
     )
     .then(response => {
-      console.log(response);
-      if (response.status === 201) {
-        // this.displayResponse(response.body);
-        console.log(response.body);
+      if (response.status === 200) {
+        console.log('Edit form update success');
+        this.displayToken(formData["name"], formData["password"]);
+        this.fetchServiceHosts();
       } else {
-        // this.displayResponse(response.body);
         console.log(response.body);
       }
     })

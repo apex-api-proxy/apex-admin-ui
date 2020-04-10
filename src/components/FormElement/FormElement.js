@@ -3,8 +3,6 @@ import FormInput from '../FormInput/FormInput';
 import FormSelect from '../FormSelect/FormSelect';
 
 const FormElement = (props) => {
-	console.log(`FormElement props.onFormElementChange: ${props.onFormElementChange}`)
-
 	const processInput = () => {
 
 		switch (props.input.elementType) {

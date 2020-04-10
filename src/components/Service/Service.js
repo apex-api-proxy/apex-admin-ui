@@ -4,7 +4,6 @@ import { serviceFormInputs } from '../../formInputs';
 
 
 const Service = (props) => {
-	// const services = props.services.map(service => <Service name={service.name} address={service.address} />);
 	const inputs = serviceFormInputs.filter(input => input.name !== "Service Name");
 
 	return (

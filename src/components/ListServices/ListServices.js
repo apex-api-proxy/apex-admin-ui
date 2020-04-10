@@ -10,6 +10,7 @@ const ListServices = (props) => {
 		formActive={props.activeEditForm === service.name}
 		onEditServiceClick={props.onEditServiceClick}
 		formInputChange={props.formInputChange}
+		submitForm={props.submitForm}
 	/>);
 
 	return (
