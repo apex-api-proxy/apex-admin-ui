@@ -41,10 +41,27 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-
-    });
+    this.fetchServiceHosts();
   }
+
+  fetchServiceHosts = () => {
+    fetch(`${baseURL}/services/`, {
+      method: 'GET'
+    })
+    .then(response => {
+      response.json()
+      .then(data => {
+        this.setState(prevState => {
+          return { 
+            ...prevState,
+            "service-hosts": data,
+          }
+        })
+      })
+      .catch(error => console.log('Processing JSON failed: ', error))
+    })
+    .catch(error => console.log('Something went wrong: ', error));
+  };
 
   handleServiceEditClick = (serviceName) => {
     console.log(serviceName);
@@ -100,7 +117,7 @@ class App extends React.Component {
       if (response.status === 201) {
         // this.displayResponse(response.body);
         this.displayToken(formData["name"], formData["password"]);
-        console.log(response.body);
+        this.fetchServiceHosts();
       } else {
         // this.displayResponse(response.body);
         console.log(response.body);
