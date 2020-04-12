@@ -170,7 +170,7 @@ li.dependent::before {
     display: none;
 }
 
-select, input {
+select, input, textarea {
     display: block;
     background-color: #f3f3f3;
     border: 1px solid #cccccc;
@@ -192,6 +192,9 @@ select, input {
 input {
     border-radius: 4px;
 }
+textarea {
+    padding-top: 6px;
+}
 
 button {
     border: 2px solid #65c8d0;
@@ -206,7 +209,7 @@ button {
 }
 
 
-.money {
+.success {
     color: #236323;
 }
 
