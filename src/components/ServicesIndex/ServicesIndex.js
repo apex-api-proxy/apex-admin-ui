@@ -1,28 +1,22 @@
 import React from 'react';
-import Service from '../Service/Service';
+import ListServices from '../ListServices/ListServices';
+import NewService from '../NewService/NewService';
+import TokenModal from '../TokenModal/TokenModal';
 
 const ServicesIndex = (props) => {
-	const services = props.services.map(service => {
-		return (
-			<Service 
-				key={service.serviceId}
-				serviceId={service.serviceId}
-				firstName={service.firstName}
-				lastName={service.lastName}
-				deduction={service.deduction}
-				dependents={!!service.dependents ? service.dependents : []}
-			/>
-		)
-	});
-
-	return (
-		<section>
-			<h2>Beneficiaries</h2>
-			<ul className="employees" onClick={props.displayDependentsListener} onKeyDown={props.displayDependentsListener}>
-				{employees}
-			</ul>
-		</section>
-	)
-}
+	if (props.token) {
+	  return <TokenModal token={props.token} doneRecordingToken={props.doneRecordingToken}/>
+	} else {
+	  return (
+	  	<div>
+	  		<NewService {...props.newService} />
+	  		<ListServices 
+	  			{...props.listServices}
+	  			activeEditForm={props.activeEditForm}
+	  		/>
+	  	</div>
+	  ) 
+	}
+};
 
 export default ServicesIndex;

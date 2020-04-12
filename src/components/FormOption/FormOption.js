@@ -4,6 +4,7 @@ const FormOption = (props) => {
 	return (
 		<option 
 			value={props.value} 
+			disabled={props.disabled}
 		>
 			{ props.displayText }
 		</option>

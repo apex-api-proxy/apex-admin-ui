@@ -4,7 +4,7 @@ const serviceFormInputs = [
 		type: "text",
 		id: "serviceNameInput",
 		placeholder: "",
-		parameter: "servicename",
+		parameter: "name",
 		labelText: "Service Name",
 		errorMessage: "Please enter a unique service name",
 		elementType: "input",
@@ -25,19 +25,19 @@ const serviceFormInputs = [
 		defaultValue: "",
 		validation: ""
 	},
-	{
-		name: "Token",
-		type: "text",
-		id: "tokenInput",
-		placeholder: "",
-		parameter: "token",
-		labelText: "Token",
-		errorMessage: "",
-		elementType: "input",
-		formType: "employeeForm",
-		defaultValue: "",
-		validation: ""
-	},
+	// {
+	// 	name: "Token",
+	// 	type: "text",
+	// 	id: "tokenInput",
+	// 	placeholder: "",
+	// 	parameter: "token",
+	// 	labelText: "Token",
+	// 	errorMessage: "",
+	// 	elementType: "input",
+	// 	formType: "employeeForm",
+	// 	defaultValue: "",
+	// 	validation: ""
+	// },
 	{
 		name: "Address",
 		type: "text",
@@ -52,6 +52,53 @@ const serviceFormInputs = [
 		validation: ""
 	}
 ];
+
+const configFormInputs = [
+	{
+		name: "Requesting Service Name",
+		type: "text",
+		id: "reqServiceNameInput",
+		placeholder: "",
+		parameter: "reqServiceName",
+		labelText: "Requesting Service Name",
+		errorMessage: "Please enter a requesting service name",
+		elementType: "select",
+		formType: "configForm",
+		defaultValue: "",
+		validation: ""
+	},
+	{
+		name: "Responding Service Name",
+		type: "text",
+		id: "resServiceNameInput",
+		placeholder: "",
+		parameter: "resServiceName",
+		labelText: "Responding Service Name",
+		errorMessage: "Please enter a responding service name",
+		elementType: "select",
+		formType: "configForm",
+		defaultValue: "",
+		validation: ""
+	},
+	{
+		name: "Custom Configuration",
+		type: "text",
+		id: "customConfig",
+		placeholder: "",
+		parameter: "configuration",
+		labelText: "Custom Configuration",
+		errorMessage: "Please a valid configuration",
+		elementType: "textArea",
+		formType: "configForm",
+		defaultValue: "",
+		validation: ""
+	},
+];
+
+module.exports = {
+	serviceFormInputs,
+	configFormInputs,
+}
 
 // Add new service
 // * Service unique name
