@@ -4,18 +4,20 @@ import FormOption from '../FormOption/FormOption';
 const FormSelect = (props) => {
 	const options = props.options.map(option => {
 		return <FormOption 
-					key={option.employeeId}
-					value={option.employeeId} 
-					displayText={`${option.lastName}, ${option.firstName}`}
+					key={option}
+					value={option} 
+					displayText={option}
 				/>
 	})
+
+	const text = `Select the ${props.name === "Requesting Service Name" ? "requesting service name" : "responding service name"}`;
 
 	options.unshift(
 		// replace static options text with a dynamic message from props
 		<FormOption
 			key="defaultValue" 
-			value="Select the dependent's employee" 
-			displayText="Select the dependent's employee"
+			value={text}
+			displayText={text}
 			disabled="disabled"
 		/>
 	);
@@ -29,7 +31,7 @@ const FormSelect = (props) => {
 			value={props.value}
 			data-form-type={props.formType}
 			data-parameter={props.parameter}
-			defaultValue={options.find(option => option.value === "Select the dependent's employee")}
+			defaultValue={text}
 			data-validation={props.validation}
 		>
 			{ options }

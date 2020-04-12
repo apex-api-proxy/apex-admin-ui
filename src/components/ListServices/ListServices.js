@@ -11,6 +11,7 @@ const ListServices = (props) => {
 		onEditServiceClick={props.onEditServiceClick}
 		formInputChange={props.formInputChange}
 		submitForm={props.submitForm}
+		initialAddressValue={props.activeEditServiceAddress}
 	/>);
 
 	return (

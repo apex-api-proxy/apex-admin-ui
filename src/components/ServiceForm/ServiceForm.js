@@ -9,12 +9,11 @@ const ServiceForm = (props) => {
 				input={input} 
 				onFormElementChange={props.formInputChange} 
 				options={input.elementType === "select" ? props.options : "none" }
-				// value={props.formValues[input.id]}
-				// setFormInputInState={props.formInputChange}
+				defaultAddressValue={props.activeEditServiceAddress}
 				formType={input.formType}
 			/>
 		)
-	})
+	});
 
 	return (
 		<form action="" id={props.inputs[0].formType}>
@@ -22,7 +21,7 @@ const ServiceForm = (props) => {
 			{inputs}
 			<button onClick={props.onFormSubmit} className="submitButton" data-form={props.inputs[0].formType} data-endpoint={props.inputs[0].endpoint}>Submit</button>
 		</form>
-	)
+	);
 }
 
 export default ServiceForm;

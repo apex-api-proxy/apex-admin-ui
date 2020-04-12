@@ -1,6 +1,7 @@
 import React from 'react';
 import FormInput from '../FormInput/FormInput';
 import FormSelect from '../FormSelect/FormSelect';
+import FormTextArea from '../FormTextArea/FormTextArea';
 
 const FormElement = (props) => {
 	const processInput = () => {
@@ -18,11 +19,25 @@ const FormElement = (props) => {
 						value={props.value}
 						formType={props.input.formType}
 						validation={props.input.validation}
+						defaultValue={props.defaultAddressValue}
 					/>
 				)
 			case "select":
 				return (
 					<FormSelect 
+						onFormElementChange={props.onFormElementChange}
+						id={props.input.id}
+						name={props.input.name}
+						parameter={props.input.parameter}
+						options={props.options}
+						value={props.value}
+						formType={props.input.formType}
+						validation={props.input.validation}
+					/>
+				)
+			case "textArea":
+				return (
+					<FormTextArea 
 						onFormElementChange={props.onFormElementChange}
 						id={props.input.id}
 						name={props.input.name}

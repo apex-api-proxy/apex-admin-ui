@@ -53,7 +53,7 @@ const serviceFormInputs = [
 	}
 ];
 
-const configurationFormInputs = [
+const configFormInputs = [
 	{
 		name: "Requesting Service Name",
 		type: "text",
@@ -97,7 +97,7 @@ const configurationFormInputs = [
 
 module.exports = {
 	serviceFormInputs,
-	configurationFormInputs,
+	configFormInputs,
 }
 
 // Add new service
