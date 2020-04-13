@@ -7,6 +7,8 @@ const Navbar = (props) => {
 		  <NavLink to='/services' activeClassName="active" activeStyle={{color: '#65c8d0'}}>Services</NavLink>
 		  <div> | </div>
 		  <NavLink to='/configuration' activeClassName="active" activeStyle={{color: '#65c8d0'}}>Configuration</NavLink>
+		  <div> | </div>
+		  <NavLink to='/logs' activeClassName="active" activeStyle={{color: '#65c8d0'}}>Logs</NavLink>
 		</nav>
 	)
 };
