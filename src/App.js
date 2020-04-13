@@ -2,10 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import ListServices from './components/ListServices/ListServices';
 import ServicesIndex from './components/ServicesIndex/ServicesIndex';
-import UpdateService from './components/UpdateService/UpdateService';
-import NewService from './components/NewService/NewService';
 import CustomServiceConfiguration from './components/CustomServiceConfiguration/CustomServiceConfiguration';
 import QueryLogs from './components/QueryLogs/QueryLogs';
 import { serviceFormInputs, configFormInputs, logsFormInputs } from './formInputs';
@@ -45,7 +42,7 @@ class App extends React.Component {
         "correlationId": "",
       },
       "token": "",
-      "logs": [],
+      "logs": [{}],
     }
   }
 
@@ -172,7 +169,6 @@ class App extends React.Component {
   };
 
   handleAddFormSubmit = (e) => {
-    console.log('process.env.HTTPS: ', process.env.HTTPS);
     e.preventDefault();
     console.log('baseURL: ', baseURL);
     const formData = this.state["addServiceForm"];
@@ -250,6 +246,7 @@ class App extends React.Component {
 
   handleLogsFormSubmit = (e) => {
     e.preventDefault();
+    console.log('Submitting log query');
     const correlationId = this.state["queryLogsForm"]["correlationId"];
 
     fetch(`${baseURL}/logs/${correlationId}`, 
@@ -392,7 +389,7 @@ class App extends React.Component {
           <Route 
             path='/logs'
             exact 
-            render={() => <QueryLogs logsForm={logsForm} /> } 
+            render={() => <QueryLogs logsForm={logsForm} logs={this.state["logs"]} /> } 
           />
           <Route 
             path='/' 

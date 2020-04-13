@@ -2,6 +2,8 @@ import React from 'react';
 import FormElement from '../FormElement/FormElement';
 
 const LogsForm = (props) => {
+	console.log('LogsForm props: ', props);
+
 	const inputs = props.inputs.map(input => {
 		return (
 			<FormElement 
@@ -19,7 +21,7 @@ const LogsForm = (props) => {
 		<form action="" id={props.inputs[0].formType}>
 			<p className="success inactive money"></p>
 			{inputs}
-			<button onClick={props.onFormSubmit} className="submitButton" data-form={props.inputs[0].formType} data-endpoint={props.inputs[0].endpoint}>Submit</button>
+			<button onClick={props.submitForm} className="submitButton" data-form={props.inputs[0].formType} data-endpoint={props.inputs[0].endpoint}>Submit</button>
 		</form>
 	);
 };

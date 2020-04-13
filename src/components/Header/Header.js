@@ -6,7 +6,7 @@ const Header = (props) => {
 	return (
 		<header>
 			<div>
-				<img className="logo" src={logo} />
+				<img className="logo" alt="Apex Proxy" src={logo} />
 			</div>
 			<h1>Apex Proxy</h1>
 			<Navbar />
