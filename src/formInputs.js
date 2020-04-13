@@ -95,6 +95,22 @@ const configFormInputs = [
 	},
 ];
 
+const logsFormInputs = [
+	{
+		name: "Correlation ID",
+		type: "text",
+		id: "correlationIdInput",
+		placeholder: "Enter a correlation ID",
+		parameter: "correlationId",
+		labelText: "Correlation ID",
+		errorMessage: "Please enter a valid correlation ID",
+		elementType: "input",
+		formType: "logsForm",
+		defaultValue: "",
+		validation: ""
+	}
+];
+
 module.exports = {
 	serviceFormInputs,
 	configFormInputs,

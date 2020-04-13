@@ -7,7 +7,7 @@ import ServicesIndex from './components/ServicesIndex/ServicesIndex';
 import UpdateService from './components/UpdateService/UpdateService';
 import NewService from './components/NewService/NewService';
 import CustomServiceConfiguration from './components/CustomServiceConfiguration/CustomServiceConfiguration';
-import { serviceFormInputs, configFormInputs } from './formInputs';
+import { serviceFormInputs, configFormInputs, logsFormInputs } from './formInputs';
 import token from 'basic-auth-token';
 import './App.css';
 
@@ -40,7 +40,11 @@ class App extends React.Component {
         "password": "",
         "address": "",
       },
+      "queryLogsForm": {
+        "correlationId": "",
+      }
       "token": "",
+      "logs": [],
     }
   }
 
@@ -153,6 +157,19 @@ class App extends React.Component {
     }
   };
 
+  handleLogsFormInputChange = (e) => {
+    e.preventDefault();
+    const queryLogsForm = this.state["queryLogsForm"];
+    queryLogsForm[e.target.dataset.parameter] = e.target.value;
+
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        "queryLogsForm": queryLogsForm,
+      };
+    })
+  };
+
   handleAddFormSubmit = (e) => {
     console.log('process.env.HTTPS: ', process.env.HTTPS);
     e.preventDefault();
@@ -221,6 +238,38 @@ class App extends React.Component {
     .then(response => {
       if (response.status === 200) {
         this.setUpdateSuccessMessage();
+      } else {
+        console.log(response.body);
+      }
+    })
+    .catch(function(error) {
+      console.log('An error occurred: ', error);
+    });
+  };
+
+  handleLogsFormSubmit = (e) => {
+    e.preventDefault();
+    const correlationId = this.state["queryLogsForm"]["correlationId"];
+
+    fetch(`${baseURL}/logs/${correlationId}`, 
+      { method: 'GET', 
+        headers: { 'Content-type': 'application/json' }
+      }
+    )
+    .then(response => {
+      if (response.status === 200) {
+        console.log('Query logs success');
+
+        response.json()
+        .then(data => {
+          this.setState(prevState => {
+            return { 
+              ...prevState,
+              "logs": data,
+            }
+          })
+        })
+        .catch(error => console.log('Processing JSON failed: ', error))
       } else {
         console.log(response.body);
       }
@@ -312,6 +361,12 @@ class App extends React.Component {
       submitForm: this.handleConfigFormSubmit,
     }
 
+    const logsForm = {
+      inputs: logsFormInputs,
+      formInputChange: this.handleLogsFormInputChange,
+      submitForm: this.handleLogsFormSubmit,
+    }
+
     return (
       <div>
         <Header />
@@ -334,6 +389,11 @@ class App extends React.Component {
             render={(listProps) => <CustomServiceConfiguration configForm={configForm} displayConfigUpdateSuccess={this.state["configUpdateSuccess"]} /> } 
           />
           <Route 
+            path='/logs'
+            exact 
+            render={(listProps) => <QueryLogs logsForm={logsForm} /> } 
+          />
+          <Route 
             path='/' 
             render={(listProps) => 
               <ServicesIndex 
@@ -353,37 +413,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// <Route path='/' exact render={(listProps) => <ListServices services={services} />} />
-// <Route path='/update' exact render={(updateProps) => <UpdateService {...updateProps} />} />
-// <Route path='/new' exact render={(newProps) => <NewService {...newProps} />} />
-
-        // <TopNav />
-        // <Route path='/new' exact component={NewService} />
-        // <Route path='/update' exact component={UpdateService} />
-        // <Route path='/custom' exact component={CustomServiceConfiguration} />
-
-// Add new service
-// * Service unique name
-// * Password
-// * Token
-// * IP address
-/*
-{
-  "name": "dagpay",
-  "address": "dagpayapi.azurewebsites.net",
-  "token": ""
-}
-*/
-
-// Update service specs (cannot update name, as that requires programmatically changing 
-// * Service (select via dropdown)
-// * Token
-// * IP address
-
-// Add/Update custom service configuration logic
-// * Calling service (select via dropdown)
-// * Called service (select via dropdown)
-// * * Timeout
-// * * Max-Retry-Attempts
-// * * Backoff
