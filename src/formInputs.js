@@ -114,6 +114,7 @@ const logsFormInputs = [
 module.exports = {
 	serviceFormInputs,
 	configFormInputs,
+	logsFormInputs,
 }
 
 // Add new service
