@@ -42,7 +42,74 @@ class App extends React.Component {
         "correlationId": "",
       },
       "token": "",
-      "logs": [{}],
+      "logs": [
+        {
+          "timestamp": "2020-04-10T09:58:38.249Z",
+          "correlation_id": "9eb41e30-81ad-4357-b3a7-e6b060cbd8de",
+          "headers": "{\"x-apex-responding-service-name\":\"bbc\",\"x-apex-authorization\":\"[scrubbed]\",\"user-agent\":\"PostmanRuntime/7.24.0\",\"accept\":\"*/*\",\"cache-control\":\"no-cache\",\"postman-token\":\"65f5fa30-2358-4850-ad36-7d606b53304e\",\"host\":\"3.135.234.50:1989\",\"accept-encoding\":\"gzip, deflate, br\",\"connection\":\"keep-alive\",\"X-Apex-Correlation-ID\":\"9eb41e30-81ad-4357-b3a7-e6b060cbd8de\"}",
+          "body": null,
+          "status_code": null,
+          "method": "GET",
+          "host": "3.135.234.50:1989",
+          "port": 1989,
+          "path": "/news?a=1&b=43fsf"
+        },
+        {
+          "timestamp": "2020-04-10T09:58:38.330Z",
+          "correlation_id": "9eb41e30-81ad-4357-b3a7-e6b060cbd8de",
+          "headers": "{\"user-agent\":\"PostmanRuntime/7.24.0\",\"accept\":\"*/*\",\"cache-control\":\"no-cache\",\"postman-token\":\"65f5fa30-2358-4850-ad36-7d606b53304e\",\"host\":\"3.135.234.50:1989\",\"accept-encoding\":\"gzip, deflate, br\",\"connection\":\"keep-alive\",\"X-Apex-Correlation-ID\":\"9eb41e30-81ad-4357-b3a7-e6b060cbd8de\",\"Host\":\"www.bbc.co.uk\"}",
+          "body": null,
+          "status_code": null,
+          "method": "GET",
+          "host": "www.bbc.co.uk",
+          "port": 443,
+          "path": "/news?a=1&b=43fsf"
+        },
+        {
+          "timestamp": "2020-04-10T09:58:38.332Z",
+          "correlation_id": "9eb41e30-81ad-4357-b3a7-e6b060cbd8de",
+          "headers": "{\"user-agent\":\"PostmanRuntime/7.24.0\",\"accept\":\"*/*\",\"cache-control\":\"no-cache\",\"postman-token\":\"65f5fa30-2358-4850-ad36-7d606b53304e\",\"host\":\"3.135.234.50:1989\",\"accept-encoding\":\"gzip, deflate, br\",\"connection\":\"keep-alive\",\"X-Apex-Correlation-ID\":\"9eb41e30-81ad-4357-b3a7-e6b060cbd8de\",\"Host\":\"www.bbc.co.uk\"}",
+          "body": null,
+          "status_code": null,
+          "method": "GET",
+          "host": "www.bbc.co.uk",
+          "port": 443,
+          "path": "/news?a=1&b=43fsf"
+        },
+        {
+          "timestamp": "2020-04-10T09:58:38.334Z",
+          "correlation_id": "9eb41e30-81ad-4357-b3a7-e6b060cbd8de",
+          "headers": "{\"user-agent\":\"PostmanRuntime/7.24.0\",\"accept\":\"*/*\",\"cache-control\":\"no-cache\",\"postman-token\":\"65f5fa30-2358-4850-ad36-7d606b53304e\",\"host\":\"3.135.234.50:1989\",\"accept-encoding\":\"gzip, deflate, br\",\"connection\":\"keep-alive\",\"X-Apex-Correlation-ID\":\"9eb41e30-81ad-4357-b3a7-e6b060cbd8de\",\"Host\":\"www.bbc.co.uk\"}",
+          "body": null,
+          "status_code": null,
+          "method": "GET",
+          "host": "www.bbc.co.uk",
+          "port": 443,
+          "path": "/news?a=1&b=43fsf"
+        },
+        {
+          "timestamp": "2020-04-10T09:58:38.335Z",
+          "correlation_id": "9eb41e30-81ad-4357-b3a7-e6b060cbd8de",
+          "headers": "{\"user-agent\":\"PostmanRuntime/7.24.0\",\"accept\":\"*/*\",\"cache-control\":\"no-cache\",\"postman-token\":\"65f5fa30-2358-4850-ad36-7d606b53304e\",\"host\":\"3.135.234.50:1989\",\"accept-encoding\":\"gzip, deflate, br\",\"connection\":\"keep-alive\",\"X-Apex-Correlation-ID\":\"9eb41e30-81ad-4357-b3a7-e6b060cbd8de\",\"Host\":\"www.bbc.co.uk\"}",
+          "body": null,
+          "status_code": null,
+          "method": "GET",
+          "host": "www.bbc.co.uk",
+          "port": 443,
+          "path": "/news?a=1&b=43fsf"
+        },
+        {
+          "timestamp": "2020-04-10T09:58:38.337Z",
+          "correlation_id": "9eb41e30-81ad-4357-b3a7-e6b060cbd8de",
+          "headers": "{\"x-powered-by\":\"Express\",\"x-apex-correlation-id\":\"9eb41e30-81ad-4357-b3a7-e6b060cbd8de\"}",
+          "body": "Apex retried your request 3 additional time(s), but every request timed out.",
+          "status_code": 504,
+          "method": null,
+          "host": null,
+          "port": null,
+          "path": null
+        }
+      ],
     }
   }
 

@@ -4,7 +4,7 @@ const Logs = (props) => {
 	const columnNames = Object.keys(props.logs[0]);
 	const headers = columnNames.map(column => {
 		return (
-			<td>{column}</td>
+			<th>{column}</th>
 		);
 	});
 
@@ -26,7 +26,9 @@ const Logs = (props) => {
 	return (
 		<table>
 		  <thead>
-		  	{headers}
+		  	<tr>
+		  		{headers}
+		  	</tr>
 		  </thead>
 		  <tbody>
 		    {rows}
