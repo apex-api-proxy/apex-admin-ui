@@ -7,6 +7,7 @@ import ServicesIndex from './components/ServicesIndex/ServicesIndex';
 import UpdateService from './components/UpdateService/UpdateService';
 import NewService from './components/NewService/NewService';
 import CustomServiceConfiguration from './components/CustomServiceConfiguration/CustomServiceConfiguration';
+import QueryLogs from './components/QueryLogs/QueryLogs';
 import { serviceFormInputs, configFormInputs, logsFormInputs } from './formInputs';
 import token from 'basic-auth-token';
 import './App.css';
@@ -42,7 +43,7 @@ class App extends React.Component {
       },
       "queryLogsForm": {
         "correlationId": "",
-      }
+      },
       "token": "",
       "logs": [],
     }
@@ -373,7 +374,7 @@ class App extends React.Component {
         <Switch>
           <Route 
             path='/services' 
-            render={(listProps) => 
+            render={() => 
               <ServicesIndex 
                 listServices={listServices} 
                 newService={newService} 
@@ -386,16 +387,16 @@ class App extends React.Component {
           <Route 
             path='/configuration'
             exact 
-            render={(listProps) => <CustomServiceConfiguration configForm={configForm} displayConfigUpdateSuccess={this.state["configUpdateSuccess"]} /> } 
+            render={() => <CustomServiceConfiguration configForm={configForm} displayConfigUpdateSuccess={this.state["configUpdateSuccess"]} /> } 
           />
           <Route 
             path='/logs'
             exact 
-            render={(listProps) => <QueryLogs logsForm={logsForm} /> } 
+            render={() => <QueryLogs logsForm={logsForm} /> } 
           />
           <Route 
             path='/' 
-            render={(listProps) => 
+            render={() => 
               <ServicesIndex 
                 listServices={listServices} 
                 newService={newService} 

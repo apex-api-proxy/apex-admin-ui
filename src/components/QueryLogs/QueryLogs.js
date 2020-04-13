@@ -8,7 +8,7 @@ const QueryLogs = (props) => {
 			<h2>Proxy logs</h2>
 			<p>Enter a correlation ID into the field below.</p>
 			<ul>
-				{services}
+				{}
 		 	</ul>
 		</section>
 	);
