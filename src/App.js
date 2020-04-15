@@ -10,7 +10,8 @@ import token from 'basic-auth-token';
 import './App.css';
 
 // const baseURL = 'https://3.135.234.50:1990';
-const baseURL = 'localhost:1990';
+// const baseURL = `https://${process.env.REACT_APP_API_URL}`;
+const baseURL = 'https://@admin-api:1990';
 
 class App extends React.Component {
   constructor(props) {
@@ -137,6 +138,8 @@ class App extends React.Component {
   };
 
   fetchConfiguration = () => {
+    console.log('baseURL: ', baseURL);
+
     fetch(`${baseURL}/services/${this.state["configForm"]["reqServiceName"]}/${this.state["configForm"]["resServiceName"]}`, {
       method: 'GET'
     })
