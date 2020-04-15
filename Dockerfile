@@ -12,4 +12,4 @@ RUN npm install -g serve
 
 COPY . ./
 
-CMD ["npm", "start"]
+CMD ["npm", "start"] 
