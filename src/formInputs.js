@@ -25,19 +25,6 @@ const serviceFormInputs = [
 		defaultValue: "",
 		validation: ""
 	},
-	// {
-	// 	name: "Token",
-	// 	type: "text",
-	// 	id: "tokenInput",
-	// 	placeholder: "",
-	// 	parameter: "token",
-	// 	labelText: "Token",
-	// 	errorMessage: "",
-	// 	elementType: "input",
-	// 	formType: "employeeForm",
-	// 	defaultValue: "",
-	// 	validation: ""
-	// },
 	{
 		name: "Address",
 		type: "text",
@@ -95,42 +82,24 @@ const configFormInputs = [
 	},
 ];
 
+const logsFormInputs = [
+	{
+		name: "Correlation ID",
+		type: "text",
+		id: "correlationIdInput",
+		placeholder: "Enter a correlation ID",
+		parameter: "correlationId",
+		labelText: "Correlation ID",
+		errorMessage: "Please enter a valid correlation ID",
+		elementType: "input",
+		formType: "logsForm",
+		defaultValue: "",
+		validation: ""
+	}
+];
+
 module.exports = {
 	serviceFormInputs,
 	configFormInputs,
+	logsFormInputs,
 }
-
-// Add new service
-// * Service unique name
-// * Password
-// * Token
-// * IP address
-/*
-{
-  "name": "dagpay",
-  "address": "dagpayapi.azurewebsites.net",
-  "token": ""
-}
-*/
-
-/*
-Employee form input template
-
-name
-id
-type
-placeholder
-parameter
-labelText
-errorMessage
-elementType
-
-<input type="text" id="employeeId" class="formInput" name="employeeId" placeholder="Enter an integer value">
-
-employeeId
-firstName
-lastName
-department
-experience
-
-*/
