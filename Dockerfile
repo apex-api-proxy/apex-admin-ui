@@ -8,6 +8,7 @@ COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
 RUN npm install react-scripts@2.1.8 -g 
+RUN npm install -g serve
 
 COPY . ./
 
