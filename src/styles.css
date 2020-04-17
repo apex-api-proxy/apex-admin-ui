@@ -262,6 +262,10 @@ table {
     padding: 10px 15px;
 }
 
+#logs-table-container table {
+  min-width: 100%;
+}
+
 #logs-table-container table td {
     cursor: pointer;
 }
