@@ -14,19 +14,21 @@ const Logs = (props) => {
 	const columnNames = Object.keys(props.logs[0]);
 	const headers = columnNames.map(column => {
 		return (
-			<th>{column}</th>
+			<th key={column}>{column}</th>
 		);
 	});
 
-	const rows = props.logs.map(log => {
+	const rows = props.logs.map((log, index) => {
 		const rowData = columnNames.map(column => {
 			return (
-				<td onClick={handleDataClick}>{log[column]}</td>
+				<td onClick={handleDataClick} key={`${column}-${index}`}>
+					{log[column]}
+				</td>
 			);
 		});
 
 		return (
-			<tr>
+			<tr key={`row-${index}`}>
 				{rowData}
 			</tr>
 		);
