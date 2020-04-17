@@ -254,6 +254,39 @@ table {
     outline: none;
 }
 
+#logs-table-container {
+    overflow: scroll;
+}
+
+#logs-table-container tr, td {
+    padding: 10px 15px;
+}
+
+#logs-table-container table {
+  min-width: 100%;
+}
+
+#logs-table-container table td {
+    cursor: pointer;
+}
+
+#logs-table-container table td:not(.expanded) {
+    text-overflow: ellipsis;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#logs-click-instructions {
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+#logs-table-separator {
+    margin-top: 2.5em;
+}
+
 body.tab-navigator button:focus,
 body.tab-navigator input:focus,
 body.tab-navigator select:focus,
