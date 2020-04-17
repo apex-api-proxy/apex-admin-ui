@@ -1,4 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+
+function handleDataClick(e) {
+	const cell = e.target;
+
+	if (cell.classList.contains('expanded')) {
+		cell.classList.remove('expanded');
+	} else {
+		cell.classList.add('expanded');
+	}
+}
 
 const Logs = (props) => {
 	const columnNames = Object.keys(props.logs[0]);
@@ -11,7 +21,7 @@ const Logs = (props) => {
 	const rows = props.logs.map(log => {
 		const rowData = columnNames.map(column => {
 			return (
-				<td>{log[column]}</td>
+				<td onClick={handleDataClick}>{log[column]}</td>
 			);
 		});
 
@@ -24,17 +34,23 @@ const Logs = (props) => {
 	console.log('columnNames: ', columnNames);
 
 	return (
-		<table>
-		  <thead>
-		  	<tr>
-		  		{headers}
-		  	</tr>
-		  </thead>
-		  <tbody>
-		    {rows}
-		  </tbody>
-		</table>
-	);	
+		<Fragment>
+			<hr id="logs-table-separator" />
+			<p id="logs-click-instructions">Click on any collapsed piece of data to expand it</p>
+			<div id="logs-table-container">
+				<table>
+					<thead>
+						<tr>
+							{headers}
+						</tr>
+					</thead>
+					<tbody>
+						{rows}
+					</tbody>
+				</table>
+			</div>
+		</Fragment>
+	);
 };
 
 export default Logs;
