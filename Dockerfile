@@ -10,7 +10,7 @@ COPY package-lock.json ./
 RUN npm install
 # RUN npm install -g react-scripts@2.1.8
 RUN npm install -g react-scripts@3.4.1
-# RUN npm install -g serve
+RUN npm install -g serve
 
 COPY . ./
 

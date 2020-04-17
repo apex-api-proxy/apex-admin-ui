@@ -9,7 +9,14 @@ import { serviceFormInputs, configFormInputs, logsFormInputs } from './formInput
 import token from 'basic-auth-token';
 import './App.css';
 
-const adminAPIHost = `http://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}`;
+let adminAPIHost;
+const environment = process.env.NODE_ENV;
+
+if (environment === 'development') {
+  adminAPIHost = `http://${process.env.REACT_APP_API_HOST_DEV}:${process.env.REACT_APP_API_PORT}`;
+} else if (environment === 'production') {
+  adminAPIHost = `http://${window.location.hostname}:${process.env.REACT_APP_API_PORT}`;
+}
 
 class App extends React.Component {
   constructor(props) {
