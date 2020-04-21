@@ -110,7 +110,6 @@ class App extends React.Component {
   };
 
   handleServiceEditClick = (serviceName) => {
-    console.log(serviceName);
     const activeForm =
       this.state['activeServiceEditForm']['name'] === serviceName ? null : serviceName;
     const address = activeForm ? this.state['service-hosts'][serviceName] : '';
@@ -190,7 +189,6 @@ class App extends React.Component {
       headers: { 'Content-type': 'application/json' },
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 201) {
           this.displayToken(formData['name'], formData['password']);
           this.fetchServiceHosts();
@@ -207,7 +205,6 @@ class App extends React.Component {
     e.preventDefault();
     const formData = this.state['activeServiceEditForm'];
     const body = JSON.stringify(formData);
-    console.log('outgoing body: ', body);
 
     fetch(`${adminAPIHost}/services/`, {
       method: 'PUT',
@@ -232,7 +229,6 @@ class App extends React.Component {
     e.preventDefault();
     const formData = this.state['configForm']['configuration'];
     const body = JSON.stringify(formData);
-    console.log('outgoing body: ', body);
 
     fetch(
       `${adminAPIHost}/services/${this.state['configForm']['reqServiceName']}/${this.state['configForm']['resServiceName']}`,
@@ -252,7 +248,6 @@ class App extends React.Component {
 
   handleLogsFormSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitting log query');
     const correlationId = this.state['queryLogsForm']['correlationId'];
 
     fetch(`${adminAPIHost}/logs/${correlationId}`, {
@@ -261,8 +256,6 @@ class App extends React.Component {
     })
       .then((response) => {
         if (response.status === 200) {
-          console.log('Query logs success');
-
           response
             .json()
             .then((data) => {
