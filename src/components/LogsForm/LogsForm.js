@@ -2,8 +2,6 @@ import React from 'react';
 import FormElement from '../FormElement/FormElement';
 
 const LogsForm = (props) => {
-	console.log('LogsForm props: ', props);
-
 	const inputs = props.inputs.map(input => {
 		return (
 			<FormElement 

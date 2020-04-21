@@ -2,7 +2,6 @@ import React from 'react';
 import Service from '../Service/Service';
 
 const ListServices = (props) => {
-	console.log('ListServices props: ', props);
 	const services = props.services.map(service => <Service 
 		key={service.name} 
 		name={service.name} 

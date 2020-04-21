@@ -33,7 +33,6 @@ const Logs = (props) => {
 			</tr>
 		);
 	})
-	console.log('columnNames: ', columnNames);
 
 	return (
 		<Fragment>
